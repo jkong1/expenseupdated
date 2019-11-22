@@ -6,7 +6,7 @@ class LandingPage extends Component{
         const landpage = {
             textAlign:'center',
             paddingTop:'150px',
-            color:'#10316b'
+            color:'white'
         }
         return(
             <div style={landpage}>

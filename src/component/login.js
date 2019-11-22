@@ -11,6 +11,7 @@ class Login extends Component{
         const input = {
             textAlign:'center',
             margin:'auto',
+            color:'black'
         }
         return(
             <div>
