@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 const db = require('./db')
 const cors = require('cors')
 
-const origin = process.env.NODE_ENV !== 'production' ? 'http://localhost:5000' : 'prod-url'
+const origin = process.env.NODE_ENV !== 'production' ? 'http://localhost:5000' : 'https://expenseupdated.herokuapp.com/'
 
 dotenv.config();
 app.use(bodyParser.json());
