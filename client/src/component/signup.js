@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {BASE_URL} from "../index"
 
 
 
@@ -22,7 +23,7 @@ class Signup extends Component {
     }
     submit(e){
         e.preventDefault();
-        fetch('http://localhost:5000/createuser',{
+        fetch(`${BASE_URL}/createuser`,{
             method:'POST',
             headers: {
               'Accept': 'application/json',
