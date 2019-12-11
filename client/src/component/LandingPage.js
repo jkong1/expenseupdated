@@ -10,8 +10,8 @@ class LandingPage extends Component{
         }
         return(
             <div style={landpage}>
-                <h1>Ticket Master</h1>
-                <h1>An easy way to report and manage ticket report</h1>
+                <h1>Expense Master</h1>
+                <h1>An easy way to view and manager your money</h1>
             </div>
         )
     }
