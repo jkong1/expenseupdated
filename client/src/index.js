@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-export const BASE_URL = process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'https://expenseupdated.herokuapp.com/'
+// export const BASE_URL = process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'https://expenseupdated.herokuapp.com/'
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
