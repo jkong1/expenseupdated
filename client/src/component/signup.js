@@ -22,7 +22,7 @@ class Signup extends Component {
     }
     submit(e){
         e.preventDefault();
-        fetch('/createuser',{
+        fetch('/api/createuser',{
             method:'POST',
             headers: {
               'Accept': 'application/json',

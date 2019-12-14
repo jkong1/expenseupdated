@@ -14,17 +14,19 @@ app.use(cors());
 app.listen(port, () => {  console.log('We are live on ' + port);});
 
 
-
 if(process.env.NODE_ENV === 'production'){
-  app.use(express.static(path.join(__dirname, 'client/build')))
+  app.use(express.static(path.join(__dirname, 'client/public')))
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/client/build/index.html'))
+  res.sendFile(path.join(__dirname + '/client/public/index.html'))
 });
 
 }
+app.get('/api/hello', (req,res) => {
+  res.send({express: 'hello there'})
+})
 
 
-app.post('/createuser', (req,res) => {
+app.post('/api/createuser', (req,res) => {
     db.createuser({
         username: req.body.username,
         password: req.body.password,
