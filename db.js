@@ -14,8 +14,8 @@ client.connect()
 module.exports = {
     createuser({username,password,res}){
         bcrypt.hash(password,10,function(err,hash){
-            var qry = "INSERT INTO users(username,password) values($1, $2)"
-            client.query(qry, [username, hash]).catch(function(err,result){
+            var qry = "INSERT INTO users(password,username) values($1, $2)"
+            client.query(qry, [hash, username]).catch(function(err,result){
                 if(err){
                     console.log("An error was found")
                     client.end()
