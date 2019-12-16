@@ -8,6 +8,7 @@ const client = new Client({
     database: process.env.database,
     password: process.env.password,
     port: process.env.portdb,
+    ssl: true
   })
 client.connect()
 
@@ -17,6 +18,7 @@ module.exports = {
             var qry = "INSERT INTO users(password,username) values($1, $2)"
             client.query(qry, [hash, username]).catch(function(err,result){
                 if(err){
+                    console.log(err)
                     console.log("An error was found")
                     client.end()
                     res.sendStatus(401)
