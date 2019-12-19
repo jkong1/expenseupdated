@@ -6,6 +6,7 @@ import Login from './login';
 import Signup from './signup';
 import Home from './home';
 import Input from './input'
+import auth from './auth';
 
 class ConnectRoute extends Component {
     render(){
@@ -15,7 +16,7 @@ class ConnectRoute extends Component {
                 <Route exact path="/" component={LandingPage} />
                 <Route path='/login' component={Login} />
                 <Route path='/signup' component={Signup} />
-                <Route path='/home' component={Home} />
+                <Route path='/home' component={auth(Home)} />
                 <Route path='/input' component={Input} />
                 <Route component={Error} />
             </Switch>

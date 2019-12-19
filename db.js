@@ -1,14 +1,16 @@
 const {Pool,Client} = require('pg')
 const dotenv = require('dotenv');
-dotenv.config();
+const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs');
+dotenv.config();
+const secret = process.env.jwtpass
+
 const client = new Client({
     user: process.env.user,
     host: process.env.host,
     database: process.env.database,
     password: process.env.password,
     port: process.env.portdb,
-    ssl: true
   })
 client.connect()
 
@@ -29,5 +31,26 @@ module.exports = {
 
             })
             })
+        },
+        login({username,password,res}){
+            var qry = 'SELECT * FROM users WHERE username=$1'
+            client.query(qry,[username]).then((result,err) =>{
+                if(result.rows.length > 0){
+                    bcrypt.compare(password,result.rows[0].password).then((same,err)=>{
+                        if(same){
+                            const payload = {username};
+                            const token = jwt.sign(payload,secret, {
+                                expiresIn:'1h'
+                            });
+                            res.cookie('token', token, {httpOnly:true}).sendStatus(200);
+
+                        } else {
+                            res.sendStatus(401)
+                        }
+                    })
+                } else {
+                    res.sendStatus(401)
+                }  
+            });
         }
-}
+    }
