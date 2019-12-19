@@ -9,8 +9,9 @@ class Nav_Bar2 extends Component {
                 <Navbar>
                     <NavbarBrand href='/home'>Ticket Master</NavbarBrand>
                     <Nav>
-                        <NavLink href='/input'>Login In</NavLink>
-                        <NavLink  href='/contact' >Sign Up</NavLink>
+                        <NavLink href='/Input'>Input</NavLink>
+                        <NavLink  href='/contact' >Contact</NavLink>
+                        <NavLink  href='/contact' >Log Out</NavLink>
                     </Nav>
                 </Navbar>
             </div>

@@ -17,7 +17,7 @@ class ConnectRoute extends Component {
                 <Route path='/login' component={Login} />
                 <Route path='/signup' component={Signup} />
                 <Route path='/home' component={auth(Home)} />
-                <Route path='/input' component={Input} />
+                <Route path='/input' component={auth(Input)} />
                 <Route component={Error} />
             </Switch>
            </BrowserRouter> 
