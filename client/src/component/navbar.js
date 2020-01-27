@@ -8,7 +8,7 @@ class navbar extends Component {
     render() {
         const Background_Color = {
             background:'rgb(13, 15, 15)',
-            width:'80%',
+            width:'50%',
             margin:'auto'
           };
           const fontColor = {
@@ -17,7 +17,7 @@ class navbar extends Component {
         return(
             <div>
                 <Navbar style={Background_Color}>
-                    <NavbarBrand href='/' style={fontColor}>Ticket Master</NavbarBrand>
+                    <NavbarBrand href='/' style={fontColor}>Expense Master</NavbarBrand>
                     <Nav>
                         <NavLink href='/login' style={fontColor}>Login In</NavLink>
                         <NavLink  href='/signup' style={fontColor}>Sign Up</NavLink>

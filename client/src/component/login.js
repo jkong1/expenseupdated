@@ -19,7 +19,6 @@ class Login extends Component{
     
     }
     login(){
-        console.log("hello1")
         fetch('/api/login',{
             method:'POST',
             headers: {

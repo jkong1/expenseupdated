@@ -20,10 +20,7 @@ module.exports = {
             var qry = "INSERT INTO users(password,username) values($1, $2)"
             client.query(qry, [hash, username]).catch(function(err,result){
                 if(err){
-                    console.log(err)
-                    console.log("An error was found")
-                    client.end()
-                    res.sendStatus(401)
+                    return res.sendStatus(401)
                 } else {
                     res.sendStatus(200)
                     client.end()
@@ -38,7 +35,7 @@ module.exports = {
                 if(result.rows.length > 0){
                     bcrypt.compare(password,result.rows[0].password).then((same,err)=>{
                         if(same){
-                            const payload = {username};
+                            const payload = {username, id:result.rows[0].id};
                             const token = jwt.sign(payload,secret, {
                                 expiresIn:'1h'
                             });
@@ -52,5 +49,15 @@ module.exports = {
                     res.sendStatus(401)
                 }  
             });
+        },
+        submitData({option,name,price,res,id}){
+            var qry = 'INSERT INTO input(userid,option,name,price) values($1,$2,$3,$4)';
+            client.query(qry,[id,option,name,price]).catch((err)=> {
+                if(err){
+                    return res.sendStatus(401);
+                }
+            }).then(()=> {
+                res.sendStatus(200)
+            })
         }
-    }
+}

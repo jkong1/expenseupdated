@@ -6,7 +6,7 @@ const db = require('./db')
 const cors = require('cors')
 const path = require('path')
 const cookieParser = require('cookie-parser');
-const auth = require('./middleware')
+const auth = require('./middleware');
 var port = process.env.PORT || 5000
 
 dotenv.config();
@@ -33,6 +33,16 @@ app.post('/api/login', (req,res) => {
     username:req.body.username,
     password: req.body.password,
     res:res
+  })
+})
+//get data from the middleware to this req
+app.post('/api/submitData', auth, (req,res) => {
+  db.submitData({
+    option:req.body.option,
+    name:req.body.name,
+    price:req.body.price,
+    res:res,
+    id:req.id
   })
 })
 

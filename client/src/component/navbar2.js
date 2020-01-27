@@ -7,10 +7,10 @@ class Nav_Bar2 extends Component {
         return(
             <div>
                 <Navbar>
-                    <NavbarBrand href='/home'>Ticket Master</NavbarBrand>
+                    <NavbarBrand href='/home'>Expense Master</NavbarBrand>
                     <Nav>
                         <NavLink href='/Input'>Input</NavLink>
-                        <NavLink  href='/contact' >Contact</NavLink>
+                        <NavLink  href='/contact' >Setting</NavLink>
                         <NavLink  href='/contact' >Log Out</NavLink>
                     </Nav>
                 </Navbar>
