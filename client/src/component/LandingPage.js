@@ -5,6 +5,7 @@ class LandingPage extends Component{
     render(){
         const landpage = {
             textAlign:'center',
+            
             paddingTop:'150px',
             color:'white'
         }

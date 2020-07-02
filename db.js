@@ -2,6 +2,7 @@ const {Pool,Client} = require('pg')
 const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs');
+const { query } = require('express');
 dotenv.config();
 const secret = process.env.jwtpass
 
@@ -17,15 +18,15 @@ client.connect()
 module.exports = {
     createuser({username,password,res}){
         bcrypt.hash(password,10,function(err,hash){
-            var qry = "INSERT INTO users(password,username) values($1, $2)"
-            client.query(qry, [hash, username]).catch(function(err,result){
+            var qry = "INSERT INTO users(username,password) values($1, $2)"
+            client.query(qry,[username,hash]).catch(function(err){
                 if(err){
-                    return res.sendStatus(401)
-                } else {
-                    res.sendStatus(200)
-                    client.end()
+                    res.sendStatus(401);
                 }
-
+            }).then((result) => {
+                if(result){
+                    res.sendStatus(200);
+                }
             })
             })
         },
@@ -42,11 +43,11 @@ module.exports = {
                             res.cookie('token', token, {httpOnly:true}).sendStatus(200);
 
                         } else {
-                            res.sendStatus(401)
+                            res.sendStatus(401);
                         }
                     })
                 } else {
-                    res.sendStatus(401)
+                    res.sendStatus(401);
                 }  
             });
         },
@@ -54,10 +55,24 @@ module.exports = {
             var qry = 'INSERT INTO input(userid,option,name,price) values($1,$2,$3,$4)';
             client.query(qry,[id,option,name,price]).catch((err)=> {
                 if(err){
-                    return res.sendStatus(401);
+                    res.sendStatus(401);
                 }
-            }).then(()=> {
-                res.sendStatus(200)
+            }).then((result) => {
+                if(result){
+                    res.sendStatus(200);
+                }
+            })
+        },
+        getReport({id,res}){
+            var qry = "SELECT option,name,price from input where userid = $1";
+            client.query(qry,[id]).catch((err) => {
+                if(err){
+                    res.sendStatus(401);
+                }
+            }).then((result) => {
+                if(result){
+                    res.send(result.rows);
+                }
             })
         }
 }

@@ -1,4 +1,5 @@
-import React , {Component} from 'react'
+import React , {Component} from 'react';
+import Report from './Report';
 
 
 class Home extends Component {
@@ -7,6 +8,7 @@ class Home extends Component {
             <div>
                 <div style={{float:'left', width:'50%'}}>
                     <h1>Report</h1>
+                    <Report />
                 </div>
                 <div style={{float:'left', width:'50%'}}>
                     <h1>Chart</h1>

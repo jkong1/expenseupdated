@@ -46,6 +46,13 @@ app.post('/api/submitData', auth, (req,res) => {
   })
 })
 
+app.get('/api/getReport', auth, (req,res) => {
+  db.getReport({
+    id:req.id,
+    res:res
+  })
+} )
+
 app.get('/api/checktoken', auth, (req,res) => {
   res.sendStatus(200);
 })

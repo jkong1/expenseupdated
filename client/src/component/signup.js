@@ -8,7 +8,8 @@ class Signup extends Component {
         super()
         this.state ={
             username:"",
-            password:""
+            password:"",
+            display:""
 
         }
         this.getInfo = this.getInfo.bind(this)
@@ -32,47 +33,60 @@ class Signup extends Component {
               username: this.state.username,
               password: this.state.password
             })
+        }).then((res) => {
+            if(res.status === 200){
+                window.location.href='/login'
+            }else {
+                this.setState({
+                    display:"Please enter a proper username or password"
+                })
+            }
         })
+
 
     }
     render() {
         return (
-            <div>
-                <div className="col-md-2 mb-3">
-                    <label for="validationTooltipUsername">Username</label>
-                    <div>
+            <div className= "mx-auto mt-5" style={{background:'white',width:'500px',height:'500px'}}>
+                <p className="text-dark text-center pt-3">{this.state.display}</p>
+                <h1 className="text-center text-dark pt-3">Sign Up</h1> 
+                <p className="pt-3 pb-1 text-center text-dark">Username</p>
+                    <div className='row justify-content-md-center'>
                         <input 
                         name="username"
                         type="text" 
-                        className="form-control" 
-                        id="validationTooltipUsername" 
+                        className="form-control is-valid col-6" 
+                        id="validationServer01"
                         onChange = {this.getInfo}
                         placeholder="Username"
                         value = {this.state.username} 
-                        aria-describedby="validationTooltipUsernamePrepend" required/>
-                        <div className="invalid-tooltip">
-                            Please choose a unique and valid username.
+                        required/>
+                        <div class="invalid-feedback text-dark">
+                            Please choose a username.
                         </div>
                     </div>
+                <div>
+                <p className="pt-3 pb-1 text-center text-dark">Password</p>
+                <div className='row justify-content-md-center'> 
+                    <input
+                    name="password" 
+                    type="password" 
+                    className="form-control col-6" 
+                    id="inputPassword4"
+                    onChange = {this.getInfo}
+                    value={this.state.password} 
+                    placeholder="Password" required/>
+                    <div className="invalid-tooltip">
+                                Please enter a password
+                    </div>
                 </div>
-                <div className="form-group col-md-2">
-                <label for="inputPassword4">Password</label>
-                <input
-                name="password" 
-                type="password" 
-                className="form-control" 
-                id="inputPassword4"
-                onChange = {this.getInfo}
-                value={this.state.password} 
-                placeholder="Password" required/>
-                <div className="invalid-tooltip">
-                            Please enter a password
+                <div className='row justify-content-md-center'>
+                    <button 
+                    type="button" 
+                    className="btn btn-primary col-6 mt-3"
+                    onClick={this.submit}
+                    >Sign Up</button>
                 </div>
-                <button 
-                type="button" 
-                className="btn btn-primary"
-                onClick={this.submit}
-                >Sign Up</button>
                 </div>
             </div>
         )

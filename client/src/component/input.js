@@ -79,7 +79,7 @@ class Input extends Component{
                 style={margin} type="text" 
                 placeholder="Price"
                 name="price"
-                onChange={this.getInfo}
+                onChange={this.getInfo} 
                 value={this.state.price}
                 ></input>
                 <br />

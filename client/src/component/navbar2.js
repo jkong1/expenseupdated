@@ -7,11 +7,11 @@ class Nav_Bar2 extends Component {
         return(
             <div>
                 <Navbar>
-                    <NavbarBrand href='/home'>Expense Master</NavbarBrand>
+                    <NavbarBrand className="text-light" href='/home'>Expense Master</NavbarBrand>
                     <Nav>
-                        <NavLink href='/Input'>Input</NavLink>
-                        <NavLink  href='/contact' >Setting</NavLink>
-                        <NavLink  href='/contact' >Log Out</NavLink>
+                        <NavLink className="text-light" href='/Input'>Input</NavLink>
+                        <NavLink className="text-light" href='/contact' >Setting</NavLink>
+                        <NavLink className="text-light" href='/contact' >Log Out</NavLink>
                     </Nav>
                 </Navbar>
             </div>
