@@ -1,3 +1,3 @@
 # Expense Website
-Currently in Progress of developing
-With the goal of learning and improving
+Currently in progress of developing
+with the goal of learning and improving
